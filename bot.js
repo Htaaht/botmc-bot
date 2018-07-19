@@ -25,7 +25,7 @@ const sql = require("sqlite");
  const pretty = require('pretty-ms') 
 ,ti={}  
 ,spee={};
-
+ 
 
 var guilds = {};
 client.on('guildBanAdd', function(guild) {
