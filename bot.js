@@ -27,7 +27,6 @@ const sql = require("sqlite");
 ,spee={};
 
 
-
 var guilds = {};
 client.on('guildBanAdd', function(guild) {
             const rebellog = client.channels.find("name", "log"),
