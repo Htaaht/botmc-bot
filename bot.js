@@ -138,11 +138,21 @@ client.on('message', msg => {
     msg.delete().then
     msg.delete().then
     msg.channel.bulkDelete(textxt);
-        msg.channel.send("```Cleard: " + textxt + "\n Messages```").then(m => m.delete(3000));
+        msg.channel.send("```Cleard: " + textxt + " Messages```").then(m => m.delete(3000));
         }    
     }
 }
 });
+
+client.on('message', message => {
+    var args = message.content.split(/[ ]+/)
+    if(message.content.includes('discord.gg')){
+		if(!message.channel.guild) return;
+        message.delete()
+    return message.reply(`** Not Allowed To Advertising Here :rage: **`)
+    }
+});
+
 
 
 client.on("message", message => {
