@@ -144,16 +144,7 @@ client.on('message', msg => {
 }
 });
 
-client.on('message', message => {
-    var args = message.content.split(/[ ]+/)
-    if(message.content.includes('discord.gg')){
-		if(!message.channel.guild) return;
-        message.delete()
-    return message.reply(`** Not Allowed To Advertising Here :rage: **`)
-    }
-});
-
-
+        
 
 client.on("message", message => {
 	var prefix = "-";
