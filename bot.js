@@ -35,9 +35,10 @@ if (args.length < 2) {
 }
  
  
-const HypixelClient = new HypixelAPI(args[1]);
+const HypixelClient = new HypixelAPI(args[1])
  
-    console.log('The bot has been initialized!')
+client.on('ready', () => {
+    
  
     let installedGuilds = client.guilds.array()
  
@@ -50,23 +51,26 @@ const HypixelClient = new HypixelAPI(args[1]);
         console.log(installedGuilds[i].name + ': ' + installedGuilds[i].memberCount + ' members')
     }
  
+    console.log('Total members: ' + totalMembers)
+})
+ 
 client.on('message', async (message) => {
     if (message.author.id === client.user.id) return
  
     if (!message.guild || !message.member) {
         if (message.channel.recipient) {
-            message.channel.send('To talk to me, get my attention in servers using the `-hypixel` command!')
+            message.channel.send('To talk to me, get my attention in servers using the `!hypixel` command!')
         }
         return
     }
  
     const messageContent = message.content
  
-    if (messageContent.indexOf('-') !== 0) {
+    if (messageContent.indexOf('!') !== 0) {
         return
     }
  
-    const commandComponents = messageContent.split('-')[1].split(' ')
+    const commandComponents = messageContent.split('!')[1].split(' ')
     const baseCommand = commandComponents[0].toLowerCase()
     const commandArgs = (commandComponents.length > 1 ? commandComponents.slice(1) : [])
  
@@ -80,9 +84,9 @@ client.on('message', async (message) => {
  
             helpRich.setColor('#FFE11A')
  
-            helpRich.addField('-player <name>', 'Displays statistics for a player.')
+            helpRich.addField('!player <name>', 'Displays statistics for a player.')
  
-            helpRich.addField('-guild <name>', 'Displays statistics for a Hypixel guild.')
+            helpRich.addField('!guild <name>', 'Displays statistics for a Hypixel guild.')
  
  
             message.channel.send(helpRich)
@@ -133,7 +137,7 @@ client.on('message', async (message) => {
                 message.channel.send(playerRich)
             }
             else {
-                message.channel.send('Usage: `-player <name>`')
+                message.channel.send('Usage: `!player <name>`')
             }
             break
         case 'guild':
@@ -162,11 +166,11 @@ client.on('message', async (message) => {
                 message.channel.send(guildRich)
             }
             else {
-                message.channel.send('Usage: `-player <name>`')
+                message.channel.send('Usage: `!player <name>`')
             }
             break
     }
-});
+})
  
 var guilds = {};
 client.on('guildBanAdd', function(guild) {
