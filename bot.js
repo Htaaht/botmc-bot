@@ -54,7 +54,6 @@ client.on('message', msg => {
 }
 });
 
-        
 
 client.on("message", message => {
 	var prefix = "-";
@@ -92,7 +91,6 @@ client.on("message", message => {
 ❖-allbots ~ لعرض جميع البوتات الي بالسيرفر
 ❖-server ~يعرض لك معلومات عن السيرفر
 ❖-bot ~ يعرض لك كل معلومات البوت
-❖-skin <name> ~ يعرض لك سكنك بماين كرافت
 ❖-count ~ يعرض لك عدد الاشخاص بالسيرفر بدون بوتات
 ❖-invites ~ يعرض لك  عدد انفايتاتك بالسيرفر 
 ❖-invite-codes ~ يعرض لك روابط الانفايتات حكك في السيرفر 
@@ -154,6 +152,7 @@ client.on("message", message => {
 ❖-cv <name> ~ انشاء رووم فويس
 ❖-delet <name> ~ مسح الشات او الرووم فويس
 ❖-ccolors <number> ~ ينشا لك الوان مع كم الوان تبي
+❖-dcolors ~ يحذف لك جميع الالوان
 `)
    message.author.sendEmbed(embed)
     
@@ -179,7 +178,8 @@ client.on("message", message => {
 ❖-لو خيروك بطريقة حلوة ~ لو خيروك
 ❖-لعبة مريم ~ مريم
 ❖-فوائد ونصائح  ~ هل تعلم
-❖-يعطيك عقابات قاسية ~ عقاب   `)
+❖-يعطيك عقابات قاسية ~ عقاب 
+❖-marry ~ طلب الزواج من شخص `)
    message.author.sendEmbed(embed)
     
    }
@@ -806,18 +806,7 @@ client.on('message', message => {
 }
 });
 
-client.on("message", message => {
-    var prefix = "-"
-    if (!message.content.startsWith(prefix)) return;
-      let command = message.content.split(" ")[0];
-      command = command.slice(prefix.length);
-        if(command === "skin") {
-                const args = message.content.split(" ").slice(1).join(" ")
-        if (!args) return message.channel.send("** Type your skin name **");
-        const image = new Discord.Attachment(`https://visage.surgeplay.com/full/256/${args}`, "skin.png");
-    message.channel.send(image)
-        }
-    });
+
 client.on("guildMemberAdd", member => {
 let welcomer = member.guild.channels.find("name","welcome");
       if(!welcomer) return;
@@ -2144,35 +2133,44 @@ var prefix = "-";
     }
        
 });
-client.on('message', message => { 
-	var prefix ="-";
-           if (message.content.startsWith(prefix + "id")) {
-     var args = message.content.split(" ").slice(1);
-     let user = message.mentions.users.first();
-     var men = message.mentions.users.first();
-        var heg;
-        if(men) {
-            heg = men
-        } else {
-            heg = message.author
-        }
-      var mentionned = message.mentions.members.first();
-         var h;
-        if(mentionned) {
-            h = mentionned
-        } else {
-            h = message.member
-        }
-               moment.locale('ar-TN');
+
+client.on('message', message => {
+	var prefix = '-';
+  if (message.content.startsWith(prefix + "id")) {
+  if(!message.channel.guild) return message.reply(`هذا الأمر فقط ل السيرفرات :x:`);
+   message.guild.fetchInvites().then(invs => {
+      let member = client.guilds.get(message.guild.id).members.get(message.author.id);
+      let personalInvites = invs.filter(i => i.inviter.id === message.author.id);
+      let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
+      var moment = require('moment');
+      var args = message.content.split(" ").slice(1);
+let user = message.mentions.users.first();
+var men = message.mentions.users.first();
+ var heg;
+ if(men) {
+     heg = men
+ } else {
+     heg = message.author
+ }
+var mentionned = message.mentions.members.first();
+  var h;
+ if(mentionned) {
+     h = mentionned
+ } else {
+     h = message.member
+ }
+moment.locale('ar-TN');
       var id = new  Discord.RichEmbed()
-      .setAuthor(message.author.username, message.author.avatarURL) 
-    .setColor("#707070")
-    .addField(': دخولك لديسكورد قبل', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true) 
-    .addField(': انضمامك لسيرفر قبل', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)               
-    .setFooter(`Speed Bot`, 'https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif')                                 
-    .setThumbnail(heg.avatarURL);
-    message.channel.send(id)
-}       });
+    .setColor("#0a0909")
+    .setAuthor(message.author.username, message.author.avatarURL)
+.addField(': دخولك لديسكورد قبل', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true)
+.addField(': انضمامك لسيرفر قبل', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)
+.addField(': عدد الدعوات', inviteCount,false)
+.setFooter("Speed Bot")
+    message.channel.sendEmbed(id);
+})
+}
+     });
 
 
 client.on('message', message => {
@@ -2318,6 +2316,35 @@ message.channel.sendMessage('تـم إنـشاء روم كـتابـي')
 }
 });
 
+client.on('message', message => {
+      if(message.content.startsWith ("-marry")) {
+      if(!message.channel.guild) return message.reply('** This command only for servers **')
+      var proposed = message.mentions.members.first()
+     
+      if(!message.mentions.members.first()) return message.reply(' 😏 **لازم تطلب ايد وحدة**').catch(console.error);
+      if(message.mentions.users.size > 1) return message.reply(' 😳 **ولد ما يصحلك الا حرمة وحدة كل مرة**').catch(console.error);
+       if(proposed === message.author) return message.reply(`**خنثى ؟ **`);
+        if(proposed === client.user) return message.reply(`** تبي تتزوجني؟ **`);
+              message.channel.send(`**${proposed} 
+ بدك تقبلي عرض الزواج من ${message.author} 
+ العرض لمدة 15 ثانية  
+ اكتبي موافقة او لا**`)
+
+const filter = m => m.content.startsWith("موافقة");
+message.channel.awaitMessages(filter, { max: 1, time: 15000, errors: ['time'] })
+.then(collected =>{ 
+    message.channel.send(` **${message.author} و ${proposed} الف الف مبروك الله , يرزقكم الذرية الصالحة** `);
+})
+
+   const filte = m => m.content.startsWith("لا");
+message.channel.awaitMessages(filte, { max: 1, time: 15000, errors: ['time'] })
+.then(collected =>{ 
+   message.channel.send(`  **${message.author} تم رفض عرضك** `);
+})
+        
+  }
+});
+
 
 client.on("message", (message) => {
 if (message.content.startsWith("-cv")) {
@@ -2329,6 +2356,24 @@ if (message.content.startsWith("-cv")) {
 }
 });
 
+client.on('message', message => {
+    var args = message.content.split(/[ ]+/)
+    if(message.content.includes('discord.gg')){
+      if(!message.member.hasPermission('MANAGE_GUILD'))
+        message.delete()
+    return message.reply(`** Not Allowed To Advertising Here  :angry: ! **`)
+    }
+});
+
+client.on('message' , ReBeL => {
+var prefix = "-";
+if(ReBeL.author.bot) return;
+if(ReBeL.channel.type == 'dm') return;
+if(ReBeL.content.startsWith(prefix + "dcolors")) {
+ReBeL.guild.roles.filter(rebel => isNaN(rebel)).forEach(codes => codes.delete())
+}
+});
+  
 
 client.on("message", (message) => {
     if (message.content.startsWith('-delet')) {
