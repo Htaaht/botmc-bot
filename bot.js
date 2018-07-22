@@ -183,7 +183,7 @@ client.on("message", message => {
    }); 
 			  
 client.on("message", message => {
-	var prefix = "^";
+	var prefix = ">";
  if (message.content === "-help-music") {
 	  message.channel.send('**تم ارسالك في الخاص** :mailbox_with_mail: ');
   const embed = new Discord.RichEmbed() 
@@ -243,7 +243,7 @@ m.sendMessage(args)
 }
 });
 
-const prefix = "^"
+const prefix = ">"
 client.on('message', async msg => { 
 	if (msg.author.bot) return undefined;
 	if (!msg.content.startsWith(prefix)) return undefined;
