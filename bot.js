@@ -151,9 +151,7 @@ client.on("message", message => {
 ❖-ct <name> ~ انشاء شات
 ❖-cv <name> ~ انشاء رووم فويس
 ❖-delet <name> ~ مسح الشات او الرووم فويس
-❖-ccolors <number> ~ ينشا لك الوان مع كم الوان تبي
-❖-dcolors ~ يحذف لك جميع الالوان
-`)
+❖-ccolors <number> ~ ينشا لك الوان مع كم الوان تبي`)
    message.author.sendEmbed(embed)
     
    }
@@ -2357,14 +2355,7 @@ if (message.content.startsWith("-cv")) {
 });
 
 
-client.on('message' , ReBeL => {
-var prefix = "-";
-if(ReBeL.author.bot) return;
-if(ReBeL.channel.type == 'dm') return;
-if(ReBeL.content.startsWith(prefix + "dcolors")) {
-ReBeL.guild.roles.filter(rebel => isNaN(rebel)).forEach(codes => codes.delete())
-}
-});
+
   
 
 client.on("message", (message) => {
