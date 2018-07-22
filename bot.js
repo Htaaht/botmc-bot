@@ -54,7 +54,6 @@ client.on('message', msg => {
 }
 });
 
-
 client.on("message", message => {
 	var prefix = "-";
  if (message.content === "-help") {
