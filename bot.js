@@ -2356,14 +2356,6 @@ if (message.content.startsWith("-cv")) {
 }
 });
 
-client.on('message', message => {
-    var args = message.content.split(/[ ]+/)
-    if(message.content.includes('discord.gg')){
-      if(!message.member.hasPermission('MANAGE_GUILD'))
-        message.delete()
-    return message.reply(`** Not Allowed To Advertising Here  :angry: ! **`)
-    }
-});
 
 client.on('message' , ReBeL => {
 var prefix = "-";
