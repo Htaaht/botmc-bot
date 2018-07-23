@@ -55,6 +55,13 @@ client.on('message', msg => {
 }
 });
 
+client.on('message', msg => {
+  if (msg.content.startsWith === '-play') {
+    msg.channel.send('تم تغيير البرفكس صار >play');
+  }
+});
+
+
 client.on("message", message => {
 	var prefix = "-";
  if (message.content === "-help") {
