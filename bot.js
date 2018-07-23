@@ -27,7 +27,7 @@ const HypixelAPI = require('hypixel-api');
  const pretty = require('pretty-ms') 
 ,ti={}  
 ,spee={};
- 
+  
 
 client.on('message', msg => {
 	var prefix = "-";
