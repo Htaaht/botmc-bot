@@ -28,7 +28,7 @@ const HypixelAPI = require('hypixel-api');
 ,ti={}  
 ,spee={};
   
-
+ 
 client.on('message', msg => {
 	var prefix = "-";
   if (msg.author.bot) return;
