@@ -121,7 +121,7 @@ client.on("message", message => {
 ❖-inv ~ لدعوة البوت الى سيرفرك
 ❖-support ~ سيرفر الدعم
 ❖-contact ~ ارسال اقتراح او لمراسلة صاحب البوت
-❖-inv-info <code-invite> ~  معلومات عن الدعوة
+❖-invite <code-invite> ~  معلومات عن الدعوة
 `)
    message.author.sendEmbed(embed)
     
@@ -2397,10 +2397,11 @@ client.on("message", message => {
 });
 
 client.on('message', async message => {
+	var prefix = "-";
   let messageArray = message.content.split(' ');
   let args = messageArray.slice(1);
-  if(message.content.startsWith(prefix + "inv-info")) {
-    if(!args) return message.reply('**Select an invitation name**');
+  if(message.content.startsWith(prefix + "invite")) {
+    if(!args) return message.reply('**Select An Invitation Code**');
     message.guild.fetchInvites().then(i => {
       let inv = i.get(args[0]);
       if(!inv) return message.reply("**I Cant Find This Code Invite `${args}`**");
@@ -2411,7 +2412,7 @@ client.on('message', async message => {
       .addField('# - Room Invite',inv.channel,true)
       .addField('# - Expired At ',moment(inv.expiresAt).format('YYYY/M/DD:h'),true)
       .addField('# - Created At',moment(inv.createdAt).format('YYYY/M/DD:h'),true)
-      .addField('# - Duration Of Invite',moment(inv.maxAge).format('DD **Hours** h **Days**'),true)
+      .addField('# - Duration Of Invite',moment(inv.maxAge).format('DD **Days** h **Hours**'),true)
       .addField('# - Users Join',inv.uses || inv.maxUses,true)
       message.channel.send(iNv);
     });
