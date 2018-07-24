@@ -2412,7 +2412,7 @@ client.on('message', async message => {
       .addField('# - Room Invite',inv.channel,true)
       .addField('# - Expired At ',moment(inv.expiresAt).format('YYYY/M/DD:h'),true)
       .addField('# - Created At',moment(inv.createdAt).format('YYYY/M/DD:h'),true)
-      .addField('# - Duration Of Invite',moment(inv.maxAge).format('DD **Days** h **Hours**'),true)
+      .addField('# - Duration Of Invite',moment(inv.maxAge).format('DD **ساعة** h **يوم**'),true)
       .addField('# - Users Join',inv.uses || inv.maxUses,true)
       message.channel.send(iNv);
     });
