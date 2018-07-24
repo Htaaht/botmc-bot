@@ -55,7 +55,7 @@ client.on('message', msg => {
 });
 
 client.on('message', msg => {
-  if (msg.content.startsWith === '-play') {
+  if (msg.content.startsWith('-play')) {
     msg.channel.send('تم تغيير البرفكس صار >play');
   }
 });
@@ -121,6 +121,7 @@ client.on("message", message => {
 ❖-inv ~ لدعوة البوت الى سيرفرك
 ❖-support ~ سيرفر الدعم
 ❖-contact ~ ارسال اقتراح او لمراسلة صاحب البوت
+❖-inv-info <code-invite> ~  معلومات عن الدعوة
 `)
    message.author.sendEmbed(embed)
     
@@ -157,7 +158,8 @@ client.on("message", message => {
 ❖-ct <name> ~ انشاء شات
 ❖-cv <name> ~ انشاء رووم فويس
 ❖-delet <name> ~ مسح الشات او الرووم فويس
-❖-ccolors <number> ~ ينشا لك الوان مع كم الوان تبي`)
+❖-ccolors <number> ~ ينشا لك الوان مع كم الوان تبي
+❖-kv @user ~ يطرد شخص من الرووم`)
    message.author.sendEmbed(embed)
     
    }
@@ -1013,8 +1015,8 @@ function getValue(key, array) {
 	    var prefix = "-";
               if(!message.channel.guild) return;
     if(message.content.startsWith(prefix + 'bc')) {
-    if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-  if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
+    if(!message.channel.guild) return message.channel.send('**This Command Only For Servers**').then(m => m.delete(5000));
+  if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**You Dont Have perms** `ADMINISTRATOR`' );
     let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
     let copy = "Speed Bot";
     let request = `Requested By ${message.author.username}`;
@@ -1036,9 +1038,9 @@ function getValue(key, array) {
        Discord.RichEmbed()
        .setColor('RANDOM')
        .setTitle('Broadcast')
-       .addField('سيرفر', message.guild.name)
-       .addField('المرسل', message.author.username)
-       .addField('الرسالة', args)
+       .addField('Server', message.guild.name)
+       .addField('Sent By', message.author.username)
+       .addField('Message', args)
        .setThumbnail(message.author.avatarURL)
        .setFooter(copy, client.user.avatarURL);
     m.send({ embed: bc })
@@ -2361,6 +2363,60 @@ client.on("message", (message) => {
         channel.delete()
     }
 });  
+
+client.on("message", message => {
+    var prefix = "-";
+    const command = message.content.split(" ")[0];
+
+    if(command == prefix+"kv"){
+
+        if (!message.guild.member(message.author).hasPermission('MOVE_MEMBERS') || !message.guild.member(message.author).hasPermission('ADMINISTRATOR')) {
+            return message.reply('you do not have permission to perform this action!');
+        }
+
+        var member = message.guild.members.get(message.mentions.users.array()[0].id);
+        if(!message.mentions.users){
+            message.reply("please mention the member")
+            return;
+        }
+
+    if(!member.voiceChannel){
+    message.reply("i can't include voice channel for member!")
+    return;
+    }
+              message.guild.createChannel('voicekick', 'voice').then(c => {
+                member.setVoiceChannel(c).then(() => {
+                    c.delete(305).catch(console.log)
+        
+
+
+    
+      });
+     });
+    }
+});
+
+client.on('message', async message => {
+  let messageArray = message.content.split(' ');
+  let args = messageArray.slice(1);
+  if(message.content.startsWith(prefix + "inv-info")) {
+    if(!args) return message.reply('**Select an invitation name**');
+    message.guild.fetchInvites().then(i => {
+      let inv = i.get(args[0]);
+      if(!inv) return message.reply("**I Cant Find This Code Invite `${args}`**");
+      var iNv = new Discord.RichEmbed()
+      .setAuthor(message.author.username,message.author.avatarURL)
+      .setThumbnail(message.author.avatarURL)
+      .addField('# - Owner Invite',inv.inviter,true)
+      .addField('# - Room Invite',inv.channel,true)
+      .addField('# - Expired At ',moment(inv.expiresAt).format('YYYY/M/DD:h'),true)
+      .addField('# - Created At',moment(inv.createdAt).format('YYYY/M/DD:h'),true)
+      .addField('# - Duration Of Invite',moment(inv.maxAge).format('DD **Hours** h **Days**'),true)
+      .addField('# - Users Join',inv.uses || inv.maxUses,true)
+      message.channel.send(iNv);
+    });
+  }
+});
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
