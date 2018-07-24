@@ -2428,7 +2428,7 @@ client.on('message', async message => {
         let embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setThumbnail(`https://api.minetools.eu/favicon/${args}/25565`)
-        .addField("📜 Name Of Serve ",`${args}`,true)
+        .addField("📜 Ip Of Serve ",`${args}`,true)
         .addField("🌐 Port Of Server ",`${port}`)
         .setImage(`http://status.mclive.eu/${args}/${args}/25565/banner.png`)
         .setFooter(`Speed Bot.`)
