@@ -107,6 +107,7 @@ client.on("message", message => {
 ❖-google ~ للبحث في قوقل عن طريق الدسكورد
 ❖-perms ~ يعرض لك برمشناتك بالسيرفر
 ❖-za5 ~ يزخرف لك كلمة او جملة
+❖-mcstats <ip server> ~ معلومات حول سيرفر ماين كرافت
 ❖-rooms ~ يعرض لك كل الرومات الي بالسيرفر مع عددها
 ❖-roles ~ يعرض لك كل الرانكات بالسيرفر بشكل جميل
 ❖-emojilist ~ يعرض لك كل الايموجيات الي بالسيرفر
@@ -2418,6 +2419,22 @@ client.on('message', async message => {
     });
   }
 });
+
+ client.on('message', message => {
+  const port = '25565'
+  if(message.content.startsWith('-mcstats')) {
+ const args = message.content.split(" ").slice(1).join(" ")
+    if (!args) return message.channel.send("** Write Ip Of Server**");
+        let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(`https://api.minetools.eu/favicon/${args}/25565`)
+        .addField("📜 Name Of Serve ",`${args}`,true)
+        .addField("🌐 Port Of Server ",`${port}`)
+        .setImage(`http://status.mclive.eu/${args}/${args}/25565/banner.png`)
+        .setFooter(`Speed Bot.`)
+                .setTimestamp()
+    message.channel.send(embed)      
+}})
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
