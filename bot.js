@@ -1,4 +1,4 @@
-const Discord = require('discord.js'); 
+const Discord = require('discord.js');  
 const db = require('quick.db');
 const client = new Discord.Client();   
 const Canvas = require('canvas'); 
