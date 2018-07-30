@@ -3,7 +3,7 @@ const db = require('quick.db');
 const client = new Discord.Client();   
 const Canvas = require('canvas'); 
 const giphy = require('giphy-api')();    
-const googl = require('goo.gl');     
+const googl = require('goo.gl'); 
 const translate = require('google-translate-api');   
 const fs = require("fs"); 
 const getYoutubeID = require('get-youtube-id'); 
@@ -814,9 +814,9 @@ client.on('message', message => {
 
 
 client.on("guildMemberAdd", member => {
-let welcomer = member.guild.channels.find("name","welcome");
-      if(!welcomer) return;
-      if(welcomer) {
+let wel = member.guild.channels.find("name","welcome");
+      if(!wel) return;
+      if(wel) {
          moment.locale('ar-ly');
          var h = member.user;
         let norelden = new Discord.RichEmbed()
@@ -825,9 +825,7 @@ let welcomer = member.guild.channels.find("name","welcome");
         .setAuthor(h.username,h.avatarURL)
         .addField(': تاريخ دخولك الدسكورد',`${moment(member.user.createdAt).format('D/M/YYYY h:mm a')} **\n** \`${moment(member.user.createdAt).fromNow()}\``,true)
          .setFooter(`${h.tag}`,"https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif")
-     welcomer.send({embed:norelden});          
-               
- 
+     wel.send({embed:norelden});          
       }
       });
 
