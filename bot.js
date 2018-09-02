@@ -72,7 +72,7 @@ if (message.content.startsWith(prefix + 'help')) {
     ❖ -ccolors <number> => Create Colors | ينشا لك الوان مع كم الوان تبي
     ❖ -kv @user => Voice Kick | يطرد شخص من الرووم
     ❖ -vonline => Create Channel Voice Online | يسوي رووم فويس اونلاين
-     ==================================================================================
+     ===========================================================
      ✴ Create Channel **welcome** To Enable The Welcome 
      ✴ Create Channel **suggestion** To Enable Command -sug`,
 	`=-=-=-=-=-= 🎯  Games Commands - اوامر الالعاب 🎯 =-=-=-=-=-=
