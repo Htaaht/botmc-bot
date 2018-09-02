@@ -77,6 +77,7 @@ if (message.content.startsWith(prefix + 'help')) {
      ✴ Create Channel **suggestion** To Enable Command -sug`,
 	`=-=-=-=-=-= 🎯  Games Commands - اوامر الالعاب 🎯 =-=-=-=-=-=
     💠 -rps => Rock & Paper & Scissors | لعبة حجر ورقة مقص
+    💠 -slots => Game Of Fruits | لعبة الفواكه
     💠 -marry @user => لعبة الزواج
     💠 -speed => لعبة سرعة كتابة 
     💠 -لعبة فكك <= فكك
