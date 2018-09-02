@@ -1664,7 +1664,7 @@ client.on('message' , message => {
 var prefix = "-"
 if (message.author.bot) return;
 if (message.content.startsWith(prefix + "contact")) {
-if (!message.channel.guild) return message.reply("This Command Only For Servers");
+if (!message.channel.guild) return;
 let args = message.content.split(" ").slice(1).join(" ");
 client.users.get("349616310734553088").send(
     "\n" + "**" + "● السيرفر :" + "**" +
@@ -1672,16 +1672,7 @@ client.users.get("349616310734553088").send(
     "\n" + "**" + " ● المرسل : " + "**" +
     "\n" + "**" + "» " + message.author.tag + "**" +
     "\n" + "**" + " ● الرسالة : " + "**" +
-    "\n" + "**" + args + "**")
-
-let embed = new Discord.RichEmbed()
-     .setAuthor(message.author.username, message.author.avatarURL)
-     .setDescription(':mailbox_with_mail: Succes The Message Has Been Sent To The Owners')
-     .setThumbnail(message.author.avatarURL)
-     .setFooter("Speed Bot")
-                                                
-
-message.channel.send(embed);
+    "\n" + "**" + args + "**");
 
 
 }
