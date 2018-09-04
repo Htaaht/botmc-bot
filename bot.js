@@ -47,7 +47,9 @@ if (message.content.startsWith(prefix + 'help')) {
     ✴ -invite \ -inv => Invite Bot | لدعوة البوت
     ✴ -embed ===> To Embed | لتكرار اي شي كتبتو بطريقة حلوة
     ✴ -avatar ==> Your Avatar | صورتك الشخصية
-    ✴ -support => Server Support | سيرفر الدعم الفني`,
+    ✴ -support => Server Support | سيرفر الدعم الفني
+     ===========================================================
+      React With ▶ To See Admins Commands`,
 	`=-=-=-=-=-= 🔧  Admin Commands - اوامر ادارية 🔧 =-=-=-=-=-=
     ❖ -move @user => Move User To Your Room Voice | لسحب الشخص الى روومك
     ❖ -mvall => Move All To Your Room Voice | لسحب الجميع الي روومك
@@ -74,7 +76,9 @@ if (message.content.startsWith(prefix + 'help')) {
     ❖ -vonline => Create Channel Voice Online | يسوي رووم فويس اونلاين
      ===========================================================
      ✴ Create Channel **welcome** To Enable The Welcome 
-     ✴ Create Channel **suggestion** To Enable Command -sug`,
+     ✴ Create Channel **suggestion** To Enable Command -sug
+     ===========================================================
+      React With ▶ To See Games Commands`,
 	`=-=-=-=-=-= 🎯  Games Commands - اوامر الالعاب 🎯 =-=-=-=-=-=
     💠 -rps => Rock & Paper & Scissors | لعبة حجر ورقة مقص
     💠 -slots => Game Of Fruits | لعبة الفواكه
@@ -83,7 +87,9 @@ if (message.content.startsWith(prefix + 'help')) {
     💠 -لعبة فكك <= فكك
     💠 -لعبة عواصم <= عواصم
     💠 -البوت يعطيك نصائح <= هل تعلم
-      قريييب نضيف بعض الالعاب واذا تبون اي لعبة تعالو سيرفر المساعدة`,
+      قريييب نضيف بعض الالعاب واذا تبون اي لعبة تعالو سيرفر المساعدة
+    ===========================================================
+      React With ▶ To See Music Commands`,
 	`=-=-=-=-=-= 🎯  Music Commands - اوامر الموسيقى 🎯 =-=-=-=-=-=
     ❖ -play => لتشغيل أغنية برآبط أو بأسم
     ❖ -skip => لتجآوز الأغنية الحآلية
