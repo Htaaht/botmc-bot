@@ -22,7 +22,7 @@ const sql = require("sqlite");
  const dateFormat = require('dateformat'); 
  const pretty = require('pretty-ms') 
 ,ti={}  
-,spee={};
+,spee={}; 
 
 client.on('message', message => {
  var prefix = "-";
