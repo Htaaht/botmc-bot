@@ -143,8 +143,8 @@ if (message.content.startsWith(prefix + 'help')) {
 });
 
 client.on('message', message => {
-var PREFIX = '-';
-    if(message.content.startsWith(PREFIX + 'dis')) {
+var prefix = '-';
+    if(message.content.startsWith(prefix + 'dis')) {
             var args = message.content.split(' ').slice(1).join(' ');
 }
       var array = [];
@@ -164,8 +164,8 @@ hastebin(`${array.slice(0, 30).join('\n')}`, 'txt').then(l => {
 }).catch(console.error);
 });
 client.on('message' , message => {
-var PREFIX = '-';
-if(message.content === `${PREFIX}dis`) {
+var prefix = '-';
+if(message.content === "-dis") {
                       let array = [];
                       var i = 0;
 client.users.filter(u => u.discriminator == message.author.discriminator).map(u => {
