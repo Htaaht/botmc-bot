@@ -143,7 +143,7 @@ if (message.content.startsWith(prefix + 'help')) {
 });
 
 client.on('message', message => {
-var PREFIX = 'البرفكس';
+var PREFIX = '-';
     if(message.content.startsWith(PREFIX + 'dis')) {
             var args = message.content.split(' ').slice(1).join(' ');
 }
