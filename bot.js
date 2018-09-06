@@ -142,46 +142,7 @@ if (message.content.startsWith(prefix + 'help')) {
     }
 });
 
-client.on('message', message => {
-var prefix = '-';
-    if(message.content.startsWith(prefix + 'dis')) {
-            var args = message.content.split(' ').slice(1).join(' ');
-}
-      var array = [];
-      var i = 0;
-      if(args){
-client.users.filter(u => u.discriminator == args).map(u => {
-    if(i > 4){
-     return;
-    }
-    i = i + 1;
 
-   array.push(`${u.tag}`);
-});
-}
-hastebin(`${array.slice(0, 30).join('\n')}`, 'txt').then(l => {
-    message.channel.send(`${l}`);
-}).catch(console.error);
-});
-client.on('message' , message => {
-var prefix = '-';
-if(message.content === "-dis") {
-                      let array = [];
-                      var i = 0;
-client.users.filter(u => u.discriminator == message.author.discriminator).map(u => {
-    if(i > 4){
-     return;
-    }
-    i = i + 1;
-   array.push(`${u.tag}`);
-});
-hastebin(`${array.slice(0, 30).join('\n')}`, 'txt').then(l => {
-    message.channel.send(`${l}`);
-}).catch(console.error);
-
-        }
-});
-   
    client.on('message', message =>{
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
